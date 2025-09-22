@@ -27369,7 +27369,7 @@ var $async$ayA=A.x(function(a,b){if(a===1)return A.y(b,r)
 while(true)switch(s){case 0:if($.a7==null)A.aBd()
 $.a7.toString
 s=2
-return A.r(A.alw("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndoY2djb2N4bnJuY2NhaHF5cXh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg0OTgyNjMsImV4cCI6MjA3NDA3NDI2M30.0zCt9GqK1oQYyyI2n4xai-2K_lpy9unfDDredPZRO-c","https://whcgcocxnrnccahqyqxu.supabase.co"),$async$ayA)
+return A.r(A.alw("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRqcmF3anJwbmF4bWp2Z3l6aHVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg1NTAxOTAsImV4cCI6MjA3NDEyNjE5MH0.yew7Vgab3MLdpVaxBfFPrMmbbLw7i2k3UKtSrRQJy4w","https://djrawjrpnaxmjvgyzhuo.supabase.co"),$async$ayA)
 case 2:if($.a7==null)A.aBd()
 q=$.a7
 q.toString
@@ -91100,7 +91100,7 @@ l===$&&A.a()
 l=l.gff().c
 s=l==null?n:l.z
 l=t.D
-r=A.qV(A.c([A.c5("\ud83c\udf38 Erika, Fatimah, JenThrift Store",n,n,n,A.dm().$4$color$fontSize$fontWeight$shadows(B.j,26,B.aw,A.c([new A.jz(A.aW(B.d.aE(76.5),B.l.F()>>>16&255,B.l.F()>>>8&255,B.l.F()&255),B.M1,6)],t.kO)),n,n),B.Qb,A.a9h(n,n,B.Gu,n,n,new A.aab(m,a),n,n,n)],l),B.ah,B.a1,B.aX,0)
+r=A.qV(A.c([A.c5("\ud83c\udf38 Erika, Fatimah, Jeniefer Thrift Store",n,n,n,A.dm().$4$color$fontSize$fontWeight$shadows(B.j,26,B.aw,A.c([new A.jz(A.aW(B.d.aE(76.5),B.l.F()>>>16&255,B.l.F()>>>8&255,B.l.F()&255),B.M1,6)],t.kO)),n,n),B.Qb,A.a9h(n,n,B.Gu,n,n,new A.aab(m,a),n,n,n)],l),B.ah,B.a1,B.aX,0)
 q=o.d
 q===$&&A.a()
 q=A.a6f(new A.BU(A.aEY(new A.aac(o,s,m),q,t.lw),o.gagM(),B.cW,n),1)
