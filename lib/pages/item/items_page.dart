@@ -36,14 +36,18 @@ class ItemsPageState extends State<ItemsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final svc          = Provider.of<SupabaseService>(context, listen: false);
+    final svc = Provider.of<SupabaseService>(context, listen: false);
     final currentEmail = Supabase.instance.client.auth.currentUser?.email;
 
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF3A0CA3), Color(0xFFF72585)],
+            colors: [
+              Color(0xFFFFB6C1), // light pink
+              Color(0xFFFEC5E5), // pastel blush
+              Color(0xFFE0BBE4), // soft lavender
+            ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -51,16 +55,25 @@ class ItemsPageState extends State<ItemsPage> {
         child: SafeArea(
           child: Column(
             children: [
+              // Header
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 child: Row(
                   children: [
                     Text(
-                      '🛍️ Thrift Store',
+                      '🌸 Erika, Fatimah, JenThrift Store',
                       style: GoogleFonts.poppins(
-                        fontSize: 24,
+                        fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 6,
+                            color: Colors.black.withOpacity(0.3),
+                            offset: const Offset(2, 2),
+                          ),
+                        ],
                       ),
                     ),
                     const Spacer(),
@@ -79,14 +92,15 @@ class ItemsPageState extends State<ItemsPage> {
               // Content grid
               Expanded(
                 child: RefreshIndicator(
-                  color: Colors.white,
+                  color: Colors.pinkAccent,
                   onRefresh: _refresh,
                   child: FutureBuilder<List<Item>>(
                     future: _fetchFuture,
                     builder: (context, snap) {
                       if (snap.connectionState != ConnectionState.done) {
                         return const Center(
-                          child: CircularProgressIndicator(color: Colors.white),
+                          child:
+                          CircularProgressIndicator(color: Colors.pinkAccent),
                         );
                       }
                       if (snap.hasError) {
@@ -115,24 +129,24 @@ class ItemsPageState extends State<ItemsPage> {
                         gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          childAspectRatio: 0.65,
+                          childAspectRatio: 0.68,
                           crossAxisSpacing: 16,
                           mainAxisSpacing: 16,
                         ),
                         itemCount: items.length,
                         itemBuilder: (context, i) {
-                          final item    = items[i];
+                          final item = items[i];
                           final isOwner = item.uploaderEmail == currentEmail;
 
                           return Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(20),
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black26,
+                                  color: Colors.black.withOpacity(0.15),
                                   blurRadius: 8,
-                                  offset: Offset(0, 4),
+                                  offset: const Offset(0, 4),
                                 ),
                               ],
                             ),
@@ -154,13 +168,14 @@ class ItemsPageState extends State<ItemsPage> {
                                           top: 8,
                                           right: 8,
                                           child: Container(
-                                            decoration: const BoxDecoration(
-                                              color: Colors.black38,
+                                            decoration: BoxDecoration(
+                                              color: Colors.pinkAccent
+                                                  .withOpacity(0.8),
                                               shape: BoxShape.circle,
                                             ),
                                             child: IconButton(
-                                              icon: const Icon(
-                                                  Icons.delete, size: 20),
+                                              icon: const Icon(Icons.delete,
+                                                  size: 20),
                                               color: Colors.white,
                                               onPressed: () async {
                                                 await svc.deleteItem(item.id);
@@ -187,6 +202,7 @@ class ItemsPageState extends State<ItemsPage> {
                                         style: GoogleFonts.poppins(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600,
+                                          color: Colors.black87,
                                         ),
                                       ),
                                       const SizedBox(height: 6),
@@ -194,7 +210,8 @@ class ItemsPageState extends State<ItemsPage> {
                                         'Php ${item.price.toStringAsFixed(2)}',
                                         style: GoogleFonts.poppins(
                                           fontSize: 14,
-                                          color: const Color(0xFF7209B7),
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.pinkAccent,
                                         ),
                                       ),
                                       const SizedBox(height: 6),
@@ -204,22 +221,23 @@ class ItemsPageState extends State<ItemsPage> {
                                         overflow: TextOverflow.ellipsis,
                                         style: GoogleFonts.poppins(
                                           fontSize: 12,
-                                          color: Colors.grey[600],
+                                          color: Colors.grey[700],
                                         ),
                                       ),
-                                      const SizedBox(height: 8),
+                                      const SizedBox(height: 10),
                                       SizedBox(
                                         width: double.infinity,
                                         child: ElevatedButton(
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor:
-                                            const Color(0xFFF72585),
+                                            Colors.pinkAccent.shade100,
+                                            foregroundColor: Colors.white,
                                             padding:
                                             const EdgeInsets.symmetric(
-                                                vertical: 10),
+                                                vertical: 12),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
-                                              BorderRadius.circular(12),
+                                              BorderRadius.circular(14),
                                             ),
                                           ),
                                           onPressed: () {
@@ -232,7 +250,8 @@ class ItemsPageState extends State<ItemsPage> {
                                           child: Text(
                                             'Details',
                                             style: GoogleFonts.poppins(
-                                                color: Colors.white),
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -254,11 +273,14 @@ class ItemsPageState extends State<ItemsPage> {
                 padding: const EdgeInsets.all(16),
                 child: FloatingActionButton.extended(
                   backgroundColor: Colors.white,
-                  foregroundColor: const Color(0xFF3A0CA3),
+                  foregroundColor: Colors.pinkAccent,
                   icon: const Icon(Icons.add),
                   label: Text(
                     'Add New',
-                    style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
                   ),
                   onPressed: () async {
                     await Navigator.pushNamed(context, '/add');

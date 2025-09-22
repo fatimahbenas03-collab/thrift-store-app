@@ -22,9 +22,12 @@ class ItemDetailPage extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFF72585), Color(0xFF3A0CA3)],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFFF8A1D1), // soft pink
+              Color(0xFFE0AAFF), // soft lavender
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
         ),
         child: SafeArea(
@@ -64,8 +67,8 @@ class ItemDetailPage extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: () => Navigator.pop(context),
-                            child:
-                            const Icon(Icons.arrow_back_ios, color: Colors.white),
+                            child: const Icon(Icons.arrow_back_ios,
+                                color: Colors.white),
                           ),
                           const SizedBox(width: 8),
                           Text(
@@ -85,8 +88,8 @@ class ItemDetailPage extends StatelessWidget {
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) =>
-                                FullScreenImagePage(itemId: item.id, imageUrl: item.imageUrl),
+                            builder: (_) => FullScreenImagePage(
+                                itemId: item.id, imageUrl: item.imageUrl),
                           ),
                         ),
                         child: Hero(
@@ -96,9 +99,9 @@ class ItemDetailPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: const [
                                 BoxShadow(
-                                  color: Colors.black38,
-                                  blurRadius: 12,
-                                  offset: Offset(0, 6),
+                                  color: Colors.black26,
+                                  blurRadius: 10,
+                                  offset: Offset(0, 5),
                                 ),
                               ],
                             ),
@@ -128,8 +131,8 @@ class ItemDetailPage extends StatelessWidget {
                         '₱ ${item.price.toStringAsFixed(2)}',
                         style: GoogleFonts.poppins(
                           fontSize: 22,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.yellowAccent,
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xFFFFC2E0), // pastel pink
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -138,7 +141,7 @@ class ItemDetailPage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Column(
@@ -149,13 +152,16 @@ class ItemDetailPage extends StatelessWidget {
                               style: GoogleFonts.poppins(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.deepPurple,
+                                color: const Color(0xFFE75480), // pink accent
                               ),
                             ),
                             const SizedBox(height: 8),
                             Text(
                               item.description,
-                              style: GoogleFonts.poppins(fontSize: 14),
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                color: Colors.black87,
+                              ),
                             ),
                           ],
                         ),
@@ -175,7 +181,8 @@ class ItemDetailPage extends StatelessWidget {
                               const SizedBox(width: 8),
                               InfoChip(
                                 icon: Icons.calendar_today,
-                                text: '${item.createdAt.month}/${item.createdAt.day}/${item.createdAt.year}',
+                                text:
+                                '${item.createdAt.month}/${item.createdAt.day}/${item.createdAt.year}',
                               ),
                             ],
                           ),
@@ -191,17 +198,19 @@ class ItemDetailPage extends StatelessWidget {
                     right: 16,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.yellowAccent,
+                        backgroundColor: const Color(0xFFE75480), // pink button
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(14),
                         ),
+                        elevation: 6,
                       ),
                       onPressed: () async {
                         final email = snap.data!.contactInfo.trim();
-                        final subject =
-                        Uri.encodeComponent('Inquiry about "${item.title}"');
-                        final uri = Uri.parse('mailto:$email?subject=$subject');
+                        final subject = Uri.encodeComponent(
+                            'Inquiry about "${item.title}"');
+                        final uri =
+                        Uri.parse('mailto:$email?subject=$subject');
                         try {
                           await launchUrl(uri,
                               mode: LaunchMode.externalApplication);
@@ -210,14 +219,16 @@ class ItemDetailPage extends StatelessWidget {
                             context: context,
                             builder: (_) => AlertDialog(
                               title: Text('Contact Owner',
-                                  style: GoogleFonts.poppins()),
+                                  style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w600)),
                               content: SelectableText(email,
                                   style: GoogleFonts.poppins()),
                               actions: [
                                 TextButton(
                                   onPressed: () => Navigator.pop(context),
                                   child: Text('Close',
-                                      style: GoogleFonts.poppins()),
+                                      style: GoogleFonts.poppins(
+                                          color: const Color(0xFFE75480))),
                                 ),
                               ],
                             ),
@@ -229,7 +240,7 @@ class ItemDetailPage extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepPurple,
+                          color: Colors.white,
                         ),
                       ),
                     ),
