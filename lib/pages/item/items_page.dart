@@ -62,7 +62,7 @@ class ItemsPageState extends State<ItemsPage> {
                 child: Row(
                   children: [
                     Text(
-                      '🌸 Erika, Fatimah, JenThrift Store',
+                      '🌸 Erika, Fatimah, Jeniefer Thrift Store',
                       style: GoogleFonts.poppins(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
