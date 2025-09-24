@@ -12,8 +12,8 @@ import 'pages/item/item_detail_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
-    url: 'https://djrawjrpnaxmjvgyzhuo.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRqcmF3anJwbmF4bWp2Z3l6aHVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg1NTAxOTAsImV4cCI6MjA3NDEyNjE5MH0.yew7Vgab3MLdpVaxBfFPrMmbbLw7i2k3UKtSrRQJy4w',
+    url: 'https://kadzuuwfhoxznwquqmkv.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImthZHp1dXdmaG94em53cXVxbWt2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg2NzY5MzMsImV4cCI6MjA3NDI1MjkzM30.GCwMOyUtrnFSn5S1z4LZgKiATC3E103V44iQqKNcDx0',
   );
   runApp(const App());
 }
